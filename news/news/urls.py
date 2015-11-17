@@ -19,7 +19,7 @@ from noticias.viewsets import *
 from rest_framework.routers import DefaultRouter
 
 router = DefaultRouter()
-router.register(r'noticias', EventosViewSet)
+router.register(r'eventos', EventosViewSet)
 
 urlpatterns = [
 	url(r'^noticias/api/', include(router.urls)),
