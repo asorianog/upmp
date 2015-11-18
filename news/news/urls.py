@@ -20,6 +20,9 @@ from rest_framework.routers import DefaultRouter
 
 router = DefaultRouter()
 router.register(r'eventos', EventosViewSet)
+router.register(r'usuarios', UsuariosViewSet)
+router.register(r'categorias', CategoriaViewSet)
+router.register(r'noticias', NoticiasViewSet)
 
 urlpatterns = [
 	url(r'^noticias/api/', include(router.urls)),

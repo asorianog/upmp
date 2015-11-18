@@ -14,7 +14,6 @@ class UsuariosSerializers(serializers.Serializer):
 	pk = serializers.IntegerField(read_only = True)
 	matricula = serializers.CharField()
 	nombre = serializers.CharField()
-	fecha = serializers.DateTimeField()
 
 	def create(self,validated_data):
 		return Usuarios.objects.create(**validated_data)
