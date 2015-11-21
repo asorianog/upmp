@@ -18,3 +18,5 @@ class Usuarios(models.Model):
 	matricula = models.CharField(max_length=100, primary_key=True)
 	nombre = models.CharField(max_length=200)
 	password = models.CharField(max_length=100)
+
+	#prueba
