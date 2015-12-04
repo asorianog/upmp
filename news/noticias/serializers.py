@@ -20,14 +20,19 @@ class UsuariosSerializers(serializers.Serializer):
 
 class NoticiasSerializers(serializers.Serializer):	
 	pk = serializers.IntegerField(read_only = True)
-	categoria = serializers.CharField()
-	#categoria = serializers.CharField(read_only = True)
+	#categoria = serializers.CharField()
+	categoria = serializers.CharField(read_only = True)
 	titulo = serializers.CharField()
 	pub_date = serializers.DateTimeField()
 	descripcion = serializers.CharField()
 
 	def create(self,validated_data):
-		return Noticias.objects.create(**validated_data)
+		noticias = Noticias()
+		noticias.categoria = Categoria.objects.all().get(nombre=validated_data['categoria'])
+		noticias.titulo = validated_data['titulo']
+		noticias.pub_date = validated_data['pub_date']
+		noticias.descripcion = validated_data['descripcion']
+		return noticias
 
 class CatogoriaSerializers(serializers.Serializer):
 	pk = serializers.IntegerField(read_only = True)
