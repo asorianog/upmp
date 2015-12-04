@@ -18,8 +18,10 @@ class UsuariosSerializers(serializers.Serializer):
 	def create(self,validated_data):
 		return Usuarios.objects.create(**validated_data)
 
-class NoticiasSerializers(serializers.Serializer):
+class NoticiasSerializers(serializers.Serializer):	
 	pk = serializers.IntegerField(read_only = True)
+	categoria = serializers.CharField()
+	#categoria = serializers.CharField(read_only = True)
 	titulo = serializers.CharField()
 	pub_date = serializers.DateTimeField()
 	descripcion = serializers.CharField()
