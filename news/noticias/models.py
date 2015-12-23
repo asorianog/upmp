@@ -4,6 +4,7 @@ class Eventos(models.Model):
 	nombre = models.CharField(max_length=200)
 	fecha = models.DateTimeField('Fecha del evento')
 	descripcion = models.CharField(max_length=1000)
+	imagen = models.CharField(max_length=1000)	
 
 	def __str__(self):
 		return '%s' % (self.nombre)
@@ -19,6 +20,7 @@ class Noticias(models.Model):
 	titulo = models.CharField(max_length=200)
 	pub_date = models.DateTimeField('Fecha de Publicacion')
 	descripcion = models.CharField(max_length=2000)
+	imagen = models.CharField(max_length=1000)
 
 	def __str__(self):
 		return '%s' % (self.titulo)

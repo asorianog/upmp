@@ -6,6 +6,7 @@ class EventosSerializers(serializers.Serializer):
 	nombre = serializers.CharField()
 	fecha = serializers.DateTimeField()
 	descripcion = serializers.CharField()
+	imagen = serializers.CharField()
 
 	def create(self,validated_data):
 		return Eventos.objects.create(**validated_data)
@@ -24,6 +25,7 @@ class NoticiasSerializers(serializers.Serializer):
 	titulo = serializers.CharField()
 	pub_date = serializers.DateTimeField()
 	descripcion = serializers.CharField()
+	imagen = serializers.CharField()
 
 	def create(self,validated_data):
 		noticias = Noticias()
@@ -31,6 +33,7 @@ class NoticiasSerializers(serializers.Serializer):
 		noticias.titulo = validated_data['titulo']
 		noticias.pub_date = validated_data['pub_date']
 		noticias.descripcion = validated_data['descripcion']
+		noticias.imagen = validated_data['imagen']
 		noticias.save()
 		return noticias
 		

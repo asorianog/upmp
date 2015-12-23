@@ -19,3 +19,4 @@ class CategoriaViewSet(viewsets.ModelViewSet):
 class NoticiasViewSet(viewsets.ModelViewSet):
 	serializer_class = NoticiasSerializers
 	queryset = Noticias.objects.all()
+	
