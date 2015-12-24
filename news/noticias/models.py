@@ -1,9 +1,10 @@
 from django.db import models
+from django.utils import timezone
 
 class Eventos(models.Model):
 	nombre = models.CharField(max_length=200)
-	fecha = models.DateTimeField('Fecha del evento')
-	descripcion = models.CharField(max_length=1000)
+	fecha = models.DateTimeField('Fecha del evento',default=timezone.now)
+	descripcion = models.TextField()
 	imagen = models.CharField(max_length=1000)	
 
 	def __str__(self):
@@ -18,8 +19,8 @@ class Categoria(models.Model):
 class Noticias(models.Model):
 	categoria = models.ForeignKey(Categoria)
 	titulo = models.CharField(max_length=200)
-	pub_date = models.DateTimeField('Fecha de Publicacion')
-	descripcion = models.CharField(max_length=2000)
+	pub_date = models.DateTimeField('Fecha de Publicacion',default=timezone.now)
+	descripcion = models.TextField()
 	imagen = models.CharField(max_length=1000)
 
 	def __str__(self):

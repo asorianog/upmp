@@ -4,7 +4,7 @@ from .models import *
 class EventosSerializers(serializers.Serializer):
 	pk = serializers.IntegerField(read_only = True)
 	nombre = serializers.CharField()
-	fecha = serializers.DateTimeField()
+	fecha = serializers.DateTimeField(read_only = True)
 	descripcion = serializers.CharField()
 	imagen = serializers.CharField()
 
@@ -23,7 +23,7 @@ class NoticiasSerializers(serializers.Serializer):
 	pk = serializers.IntegerField(read_only = True)
 	categoria = serializers.CharField()
 	titulo = serializers.CharField()
-	pub_date = serializers.DateTimeField()
+	pub_date = serializers.DateTimeField(read_only = True)
 	descripcion = serializers.CharField()
 	imagen = serializers.CharField()
 
@@ -31,7 +31,6 @@ class NoticiasSerializers(serializers.Serializer):
 		noticias = Noticias()
 		noticias.categoria = Categoria.objects.all().get(nombre=validated_data['categoria'])
 		noticias.titulo = validated_data['titulo']
-		noticias.pub_date = validated_data['pub_date']
 		noticias.descripcion = validated_data['descripcion']
 		noticias.imagen = validated_data['imagen']
 		noticias.save()

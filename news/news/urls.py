@@ -18,13 +18,16 @@ from django.contrib import admin
 from noticias.viewsets import *
 from rest_framework.routers import DefaultRouter
 
+
 router = DefaultRouter()
 router.register(r'eventos', EventosViewSet)
 router.register(r'usuarios', UsuariosViewSet)
 router.register(r'categorias', CategoriaViewSet)
 router.register(r'noticias', NoticiasViewSet)
 
+
 urlpatterns = [
 	url(r'^noticias/api/', include(router.urls)),
+	url(r'^nueva/', include('noticias.urls')),
     url(r'^admin/', include(admin.site.urls)),
 ]
