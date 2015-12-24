@@ -1,8 +1,14 @@
 from django import forms
 from .models import *
 
-class PostForm(forms.ModelForm):
+class EventoForm(forms.ModelForm):
 
         class Meta:
             model = Eventos
-            fields = ('title', 'text',)
+            fields = ('nombre', 'descripcion', 'imagen')
+
+class NoticiaForm(forms.ModelForm):
+
+        class Meta:
+            model = Noticias
+            fields = ('categoria', 'titulo', 'descripcion' ,'imagen')

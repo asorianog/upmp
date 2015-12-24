@@ -1,4 +1,21 @@
-<html>
-        <p>Hi there!</p>
-        <p>It works!</p>
-</html>
+{% load staticfiles %}
+    <html>
+        <head>
+            <title>UPMPnews</title>
+            <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css">
+            <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap-theme.min.css">
+            <link href='//fonts.googleapis.com/css?family=Lobster&subset=latin,latin-ext' rel='stylesheet' type='text/css'>
+            <link rel="stylesheet" href="{% static 'css/blog.css' %}">
+        </head>
+         <body>
+        <div class="page-header">
+            <h1><a href="/">UPMP</a></h1>
+        </div>
+        <div class="content container">
+            <div class="row">
+                <div class="col-md-8">
+                </div>
+            </div>
+        </div>
+    </body>
+    </html>

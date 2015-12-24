@@ -5,5 +5,10 @@ from rest_framework.routers import DefaultRouter
 
 
 urlpatterns = [
-	url(r'^post/new/$', views.post_new, name='post_new'),
+	url(r'^eventos$', views.evento_nueva, name='evento_nueva'),
+	url(r'^noticias$', views.noticia_nueva, name='noticia_nueva'),
+	url(r'^eventos/(?P<pk>[0-9]+)/edit/$', views.evento_edit, name='evento_edit'),
+	#url(r'^noticias/(?P<pk>[0-9]+)/edit/$', views.noticia_edit, name='noticia_edit'),
+
+
 ]
