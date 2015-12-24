@@ -1,10 +1,12 @@
 from django.shortcuts import render
 from .models import *
 from django.shortcuts import render, get_object_or_404
-#from .forms import PostForm
+from .forms import PostForm
 
 def post_new(request):
-	return render(request, 'noticias/base2.html',{})
+	return render(request, 'noticias/base.html',{})
+
+
 
 	'''
         if request.method == "POST":
