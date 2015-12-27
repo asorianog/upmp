@@ -1,6 +1,11 @@
 from .models import *
 from django.shortcuts import render, get_object_or_404
 from .forms import *
+from django.shortcuts import redirect
+
+def evento_list(request):
+	posts = Eventos.objects.filter(fecha__lte=timezone.now()).order_by('fecha')
+        return render(request, 'noticias/evento_list.html', {'posts': posts})
 
 
 def evento_nueva(request):
@@ -23,6 +28,10 @@ def noticia_nueva(request):
 		form = NoticiaForm()
 	return render(request, 'noticias/post_edit.html', {'form': form, 'tipo' : 'Noticia'})
 
+def post_detail(request, pk):
+        post = get_object_or_404(Eventos, pk=pk)
+        return render(request, 'noticias/evento_detail.html', {'post': post, 'tipo' : 'Evento'})
+        
 
 def evento_edit(request,pk):
 		post = get_object_or_404(Eventos, pk=pk)
@@ -33,6 +42,6 @@ def evento_edit(request,pk):
 				return redirect('noticias.views.post_detail', pk=post.pk)
 		else:
 			form = EventoForm(instance=post)
-		return render(request, 'noticias/evento_detail.html', {'form': form, 'post' : post})
+		return render(request, 'noticias/post_edit.html', {'form': form, 'tipo' : 'Evento', 'post' : post})
 
 #def noticia_edit(request):
