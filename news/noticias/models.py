@@ -1,12 +1,15 @@
 from django.db import models
 from django.utils import timezone
+import cloudinary
+import cloudinary.uploader
+import cloudinary.api	
+from cloudinary.models import CloudinaryField
 
 class Eventos(models.Model):
 	nombre = models.CharField(max_length=200)
 	fecha = models.DateTimeField('Fecha del evento',default=timezone.now)
 	descripcion = models.TextField()
-	imagen = models.CharField(max_length=1000)	
-
+	imagen = models.CharField(max_length=1000)
 	def __str__(self):
 		return '%s' % (self.nombre)
 
@@ -33,3 +36,20 @@ class Usuarios(models.Model):
 
 	def __str__(self):
 		return '%s' % (self.nombre)
+
+
+class Photo(models.Model):
+    ## Misc Django Fields
+    create_time = models.DateTimeField(auto_now_add=True)
+    title = models.CharField("Title (optional)", max_length=200, blank=True)
+
+    ## Points to a Cloudinary image
+    image = CloudinaryField('image')
+
+    """ Informative name for mode """
+    def __unicode__(self):
+        try:
+            public_id = self.image.public_id
+        except AttributeError:
+            public_id = ''
+        return "Photo <%s:%s>" % (self.title, public_id)
