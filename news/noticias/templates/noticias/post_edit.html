@@ -17,8 +17,8 @@
 {% block body %}
   <!-- A standard form for sending the image data to your server -->
   <div id='backend_upload'>
-    <h1>Upload through your server</h1>
-    <!--<form action="{% url "noticias.views.upload" %}" method="post" enctype="multipart/form-data">
+   <!-- <h1>Upload through your server</h1>
+    <form action="{% url "noticias.views.upload" %}" method="post" enctype="multipart/form-data">
       {% csrf_token %}
       {{ backend_form }}
       <input type="submit" value="Upload">
@@ -50,15 +50,16 @@
     The cloudinary_direct_upload_field method generates the required HTML and JavaScript to    
     allow uploading directly from the browser to your Cloudinary account -->
   <div id='direct_upload'>
+    <!--
     <h1>Direct {% if unsigned %}unsigned {% endif %}upload from the browser</h1>
-
+    -->
     <form action="{% url "noticias.views.direct_upload_complete" %}" method="post" enctype="multipart/form-data">
       {% csrf_token %}
       {{ direct_form }}
       {# altenatively, could use: {% cloudinary_direct_upload_field request=request %} #}
     </form>
 
-    <!-- status box -->
+    <!-- status box 
     <div class="status">
       <h2>Status</h2>
       <span class="status_value">Idle</span>
@@ -70,7 +71,7 @@
     {% else %}
       <a href="?unsigned=true">Switch to unsigned upload</a>
     {% endif %}
-  </div>
+  </div> -->
 {% endblock %}
 {% block javascript %}
   function prettydump(obj) {
