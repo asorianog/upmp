@@ -27,6 +27,7 @@ class NoticiasSerializers(serializers.Serializer):
 	descripcion = serializers.CharField()
 	imagen = serializers.CharField()
 
+
 	def create(self,validated_data):
 		noticias = Noticias()
 		noticias.categoria = Categoria.objects.all().get(nombre=validated_data['categoria'])

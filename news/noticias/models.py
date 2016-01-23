@@ -13,6 +13,7 @@ class Eventos(models.Model):
 	def __str__(self):
 		return '%s' % (self.nombre)
 
+
 class Categoria(models.Model):
 	nombre = models.CharField(max_length=200)
 
@@ -25,6 +26,8 @@ class Noticias(models.Model):
 	pub_date = models.DateTimeField('Fecha de Publicacion',default=timezone.now)
 	descripcion = models.TextField()
 	imagen = models.CharField(max_length=1000)
+	title = models.CharField("Title (optional)", max_length=200, blank=True)
+	image = CloudinaryField('image') 
 
 	def __str__(self):
 		return '%s' % (self.titulo)
@@ -40,6 +43,7 @@ class Usuarios(models.Model):
 
 class Photo(models.Model):
     ## Misc Django Fields
+    
     create_time = models.DateTimeField(auto_now_add=True)
     title = models.CharField("Title (optional)", max_length=200, blank=True)
 

@@ -18,7 +18,8 @@ class NoticiaForm(forms.ModelForm):
 
         class Meta:
             model = Noticias
-            fields = ('categoria', 'titulo', 'descripcion' ,'imagen')
+            #fields = ('categoria', 'titulo', 'descripcion' ,'imagen')
+            fields = '__all__'
 
             
 
@@ -27,9 +28,12 @@ class PhotoForm(ModelForm):
         model = Photo
         fields = '__all__'
 
-class PhotoDirectForm(PhotoForm):
+class PhotoDirectForm(NoticiaForm):
     image = CloudinaryJsFileField()
 
-class PhotoUnsignedDirectForm(PhotoForm):
+#class PhotoDirectForm(PhotoForm):
+#    image = CloudinaryJsFileField()
+
+class PhotoUnsignedDirectForm(NoticiaForm):
     upload_preset_name = "sample_" + hashlib.sha1(to_bytes(cloudinary.config().api_key + cloudinary.config().api_secret)).hexdigest()[0:10]
     image = CloudinaryUnsignedJsFileField(upload_preset_name)
