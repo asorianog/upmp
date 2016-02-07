@@ -1,0 +1,47 @@
+div {
+	position: relative;
+	display: inline-block;
+	height: 300px;
+	width: 300px;
+	border-radius: 100%;
+	border: 2px solid black;
+	margin-left: 5px;
+	margin-top: 5px;
+	text-align: center;
+}
+
+.noticias{
+	text-decoration: none;
+	color: #00205b;
+}
+.eventos{
+	text-decoration: none;
+	color: #e35205;
+}
+div p {
+	position: relative;
+	margin-top: 130px;
+	font-size: 40px;
+	/* Safari */
+	-webkit-transform: rotate(-45deg);
+	/* Firefox */
+	-moz-transform: rotate(-45deg);
+	/* IE */
+	-ms-transform: rotate(-45deg);
+	/* Opera */
+	-o-transform: rotate(-45deg);
+	/* Internet Explorer */
+	filter: progid:DXImageTransform.Microsoft.BasicImage(rotation=3);
+}
+
+.not{
+	border: 5px dashed #e35205;
+}
+.even{
+	border: 5px dashed #00205b;
+}
+#imagen{
+	display: block;
+	clear: center;
+	float: center;
+}

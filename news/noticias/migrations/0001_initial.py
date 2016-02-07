@@ -2,8 +2,8 @@
 from __future__ import unicode_literals
 
 from django.db import migrations, models
-import django.utils.timezone
 import cloudinary.models
+import django.utils.timezone
 
 
 class Migration(migrations.Migration):
@@ -27,6 +27,7 @@ class Migration(migrations.Migration):
                 ('fecha', models.DateTimeField(default=django.utils.timezone.now, verbose_name=b'Fecha del evento')),
                 ('descripcion', models.TextField()),
                 ('imagen', models.CharField(max_length=1000)),
+                ('image', cloudinary.models.CloudinaryField(max_length=255, verbose_name=b'image')),
             ],
         ),
         migrations.CreateModel(
@@ -37,7 +38,6 @@ class Migration(migrations.Migration):
                 ('pub_date', models.DateTimeField(default=django.utils.timezone.now, verbose_name=b'Fecha de Publicacion')),
                 ('descripcion', models.TextField()),
                 ('imagen', models.CharField(max_length=1000)),
-                ('title', models.CharField(max_length=200, verbose_name=b'Title (optional)', blank=True)),
                 ('image', cloudinary.models.CloudinaryField(max_length=255, verbose_name=b'image')),
                 ('categoria', models.ForeignKey(to='noticias.Categoria')),
             ],

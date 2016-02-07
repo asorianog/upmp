@@ -28,7 +28,8 @@ DEBUG = True
 #DEBUG = False
 
 ALLOWED_HOSTS = []
-#ALLOWED_HOSTS = ['localhost:8000']
+#ALLOWED_HOSTS = ['*']
+
 
 
 # Application definition

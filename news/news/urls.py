@@ -16,6 +16,8 @@ Including another URLconf
 from django.conf.urls import include, url
 from django.contrib import admin
 from noticias.viewsets import *
+from noticias import views
+
 from rest_framework.routers import DefaultRouter
 
 
@@ -30,4 +32,6 @@ urlpatterns = [
 	url(r'^noticias/api/', include(router.urls)),
 	url(r'^nueva/', include('noticias.urls')),
     url(r'^admin/', include(admin.site.urls)),
+    url(r'^menu/', views.menu),
+
 ]

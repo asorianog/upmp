@@ -19,6 +19,7 @@ urlpatterns = [
 
 	url(r'^eventos/(?P<pk>[0-9]+)/edit/$', views.evento_edit, name='evento_edit'),
 	url(r'^noticias/(?P<pk>[0-9]+)/edit/$', views.noticia_edit, name='noticia_edit'),
+	
 
 
     url(r'^list$', views.list),

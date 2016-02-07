@@ -12,14 +12,14 @@ class EventoForm(forms.ModelForm):
 
         class Meta:
             model = Eventos
-            fields = ('nombre', 'descripcion', 'imagen')
+            fields = ('nombre', 'descripcion', 'image')
 
 class NoticiaForm(forms.ModelForm):
 
         class Meta:
             model = Noticias
-            #fields = ('categoria', 'titulo', 'descripcion' ,'imagen')
-            fields = '__all__'
+            fields = ('categoria', 'titulo', 'descripcion' ,'image')
+            #fields = '__all__'
 
             
 

@@ -8,6 +8,7 @@ from django.views.decorators.csrf import csrf_exempt
 from cloudinary.forms import cl_init_js_callbacks
 from cloudinary import api # Only required for creating upload presets on the fly
 
+
 #------------------------(Noticias y eventos)
 
 def evento_list(request):
@@ -19,14 +20,39 @@ def noticia_list(request):
         return render(request, 'noticias/noticia_list.html', {'posts': posts})
 
 def evento_nueva(request):
-        if request.method == "POST":
-		form = EventoForm(request.POST)
-		if form.is_valid():
-			post = form.save()
-			return redirect('noticias.views.evento_detail', pk=post.pk)
-	else:
-		form = EventoForm()
-	return render(request, 'noticias/post_edit.html', {'form': form, 'tipo' : 'Evento'})
+    unsigned = request.GET.get("unsigned") == "true"
+    
+    if (unsigned):
+        # For the sake of simplicity of the sample site, we generate the preset on the fly. It only needs to be created once, in advance.
+        try:
+            api.upload_preset(PhotoUnsignedDirectForm.upload_preset_name)
+        except api.NotFound:
+            api.create_upload_preset(name=PhotoUnsignedDirectForm.upload_preset_name, unsigned=True, folder="preset_folder")
+            
+    direct_form = PhotoUnsignedDirectForm() if unsigned else PhotoDirectForm()
+    context = dict(
+        # Form demonstrating backend upload
+        backend_form = PhotoForm(),
+        # Form demonstrating direct upload
+        direct_form = direct_form,
+        # Should the upload form be unsigned
+        unsigned = unsigned,
+    )
+    # When using direct upload - the following call in necessary to update the
+    # form's callback url
+    cl_init_js_callbacks(context['direct_form'], request)
+
+    if request.method == "POST":
+        form = EventoForm(request.POST, request.FILES)
+        context['posted'] = form.instance
+        if form.is_valid():
+            post = form.save()
+            post.imagen = post.image.url
+            post.save()
+            return redirect('noticias.views.evento_detail', pk=post.pk)
+    else:
+        form = EventoForm()
+    return render(request, 'noticias/post_edit.html', {'form': form, 'tipo' : 'Evento'})
 
 def noticia_nueva(request):
     unsigned = request.GET.get("unsigned") == "true"
@@ -57,6 +83,8 @@ def noticia_nueva(request):
         context['posted'] = form.instance
         if form.is_valid():
             post = form.save()
+            post.imagen = post.image.url
+            post.save()
             return redirect('noticias.views.noticia_detail', pk=post.pk)
     else:
         form = NoticiaForm()
@@ -105,6 +133,9 @@ def handler500(request):
                                   context_instance=RequestContext(request))
     response.status_code = 500
     return response
+
+def menu(request):
+        return render(request, 'noticias/welcome.html', {})
 
 
 #---------------------------(Cloudinary)

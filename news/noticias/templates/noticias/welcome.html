@@ -1,0 +1,33 @@
+{% load staticfiles %}
+<!DOCTYPE html>
+<html>
+
+    <head>
+        <title>Menu</title>
+        <link rel="stylesheet" type="text/css" href="css/welcome.css">
+        <link rel="stylesheet" type="text/css" href="{% static 'css/welcome.css' %}">
+        <img id="imagen" src="http://res.cloudinary.com/upmp/image/upload/c_scale,w_400/v1454800382/Metro_logos-web-01_ej1guw.jpg">
+    </head>
+
+    <body>
+        
+
+        <div class="not">
+            <a class="noticias"href="http://localhost:8000/nueva/noticias/"><p>Noticias</p></a>
+        </div>
+
+        <div class="even">
+            <a class="eventos" href="http://localhost:8000/nueva/eventos/"><p>Eventos</p></a>
+        </div>
+
+        <div class="not">
+            <a class="noticias"href="http://localhost:8000/nueva/noticias/list"><p>Noticias/lista</p></a>
+        </div>
+
+        <div class="even">
+            <a class="eventos" href="http://localhost:8000/nueva/eventos/list"><p>Eventos/lista</p></a>
+        </div>
+
+    </body>
+
+</html>

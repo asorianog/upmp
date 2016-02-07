@@ -5,9 +5,11 @@
 
     {% block content %}
         <h1>Nuevo {{ tipo }}</h1>
-        <form method="POST" class="post-form" enctype="multipart/form-data">
+        <form  method="POST" class="post-form" enctype="multipart/form-data">
             {% csrf_token %}
             {{ form.as_p }}
+            {{ direct_form }}
+            {# altenatively, could use: {% cloudinary_direct_upload_field request=request %} #}
             {{ backend_form }}
             <button type="submit" class="save btn btn-default">Save</button>
         </form>
